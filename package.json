@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/n0bisuke/IoTLT_cron/issues"
   },
-  "homepage": "https://github.com/n0bisuke/IoTLT_cron#readme"
+  "homepage": "https://github.com/n0bisuke/IoTLT_cron#readme",
+  "dependencies": {
+    "connpass-analyzer": "^0.0.3"
+  }
 }
