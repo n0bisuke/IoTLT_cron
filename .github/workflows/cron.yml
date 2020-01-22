@@ -1,0 +1,27 @@
+name: cron test
+
+on:
+  schedule:
+  - cron:  '*/15 * * * *'
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [13.x]
+    
+    steps:
+    - uses: actions/checkout@master
+
+    - name: setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '13.x'
+    
+    - name: install
+      run : yarn
+
+    - name: notify
+      run : node ./data/notify.js ${{secrets.NOTIFY_TEST_TOKEN}}
