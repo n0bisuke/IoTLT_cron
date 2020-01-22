@@ -1,5 +1,6 @@
 'use strcit';
 
+const fs = require("fs");
 const Connpass = require('connpass-analyzer');
 const groupname = 'iotlt';
 const community = new Connpass(`https://${groupname}.connpass.com/`);
@@ -43,4 +44,14 @@ let config = {
 
     const res = await axios.request(config);
     console.log(res.data);
+
+    /**
+     * データ更新処理
+     * */
+    const PATH = "./data/connpass.json";
+    const readTxt = fs.readFileSync(PATH, 'utf8');
+    const communityData = JSON.parse(readTxt);
+    communityData[groupname] = c; //新規 or 更新
+    console.log(communityData);
+    fs.writeFileSync(PATH, JSON.stringify(communityData));
 })();
