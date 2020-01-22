@@ -1,0 +1,20 @@
+{
+  "name": "IoTLT_cron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n0bisuke/IoTLT_cron.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n0bisuke/IoTLT_cron/issues"
+  },
+  "homepage": "https://github.com/n0bisuke/IoTLT_cron#readme"
+}
