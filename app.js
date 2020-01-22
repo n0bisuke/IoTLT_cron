@@ -18,9 +18,7 @@ let config = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': `Bearer ${LINE_TOKEN}`
     },
-    data: qs.stringify({
-        message: `こんばんわ`,
-    })
+    data: ''
 };
 
 (async () => {
@@ -39,7 +37,9 @@ let config = {
     date.setTime(date.getTime() + 1000*60*60*9);// JSTに変換
     c.lastupdate = date;
 
-    config.data.message = JSON.stringify(c);
+    config.data = qs.stringify({
+        message: JSON.stringify(c),
+    });
 
     const res = await axios.request(config);
     console.log(res.data);
