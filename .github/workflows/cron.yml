@@ -24,4 +24,4 @@ jobs:
       run : yarn
 
     - name: notify
-      run : node ./data/notify.js ${{secrets.NOTIFY_TEST_TOKEN}}
+      run : node app.js ${{secrets.NOTIFY_TEST_TOKEN}}
