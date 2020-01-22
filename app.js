@@ -48,7 +48,7 @@ let config = {
     /**
      * データ更新処理
      * */
-    const PATH = "./data/connpass.json";
+    const PATH = "./docs/connpass.json";
     const readTxt = fs.readFileSync(PATH, 'utf8');
     const communityData = JSON.parse(readTxt);
     communityData[groupname] = c; //新規 or 更新
