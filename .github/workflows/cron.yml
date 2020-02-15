@@ -24,4 +24,4 @@ jobs:
       run : yarn
 
     - name: notify
-      run : node app.js ${{secrets.NOTIFY_TEST_TOKEN}}
+      run : LINE_TOKEN=${{secrets.NOTIFY_TEST_TOKEN}} JB_PATH=${{secrets.JSONBASE_PATH}} node app.js

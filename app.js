@@ -1,26 +1,13 @@
 'use strcit';
 
 const fs = require("fs");
-const Connpass = require('connpass-analyzer');
 const groupname = 'iotlt';
+
+const Connpass = require('connpass-analyzer');
 const community = new Connpass(`https://${groupname}.connpass.com/`);
 
-const axios = require('axios');
-const qs = require('querystring');
-const BASE_URL = 'https://notify-api.line.me';
-const PATH =  '/api/notify';
-const LINE_TOKEN = process.argv[2];
-
-let config = {
-    baseURL: BASE_URL,
-    url: PATH,
-    method: 'post',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': `Bearer ${LINE_TOKEN}`
-    },
-    data: ''
-};
+const postLinenotify = require('./libs/linenotify');
+const postJsonbase = require('./libs/jsonbase');
 
 (async () => {
     const c = {};
@@ -38,12 +25,19 @@ let config = {
     date.setTime(date.getTime() + 1000*60*60*9);// JSTに変換
     c.lastupdate = date;
 
-    config.data = qs.stringify({
-        message: JSON.stringify(c),
-    });
+    try {
+        const LineNotifyRes = await postLinenotify(c);
+        console.log(LineNotifyRes.data);
+        const JsonBaseRes = await postJsonbase(c);
+        // const JsonBaseRes = await postJsonbase({
+        //     lastupdate: c.lastupdate,
+        //     uniq_member: c.uniq_member
+        // });
+        console.log(JsonBaseRes.data)
+    } catch (error) {
+        console.log(error);
+    }
 
-    const res = await axios.request(config);
-    console.log(res.data);
 
     /**
      * データ更新処理
