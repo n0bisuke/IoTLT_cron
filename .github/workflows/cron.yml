@@ -2,7 +2,8 @@ name: cron test
 
 on:
   schedule:
-  - cron:  '*/60 * * * *'
+  - cron:  '*/720 * * * *'
+  #12時間(60*12=720)
 
 jobs:
   stale:
